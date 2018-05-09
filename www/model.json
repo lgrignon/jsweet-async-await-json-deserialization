@@ -1,0 +1,30 @@
+[
+	{
+		"name": "this kind of name my man",
+		"profile": {
+			"name": "VISITOR",
+			"__type": "Profile"
+		},
+		"__type": "User"
+	},
+	{
+		"name": "John Doe",
+		"age": 31,
+		"active": true,
+		"profile": {
+			"name": "VISITOR",
+			"__type": "Profile"
+		},
+		"__type": "User"
+	},
+	{
+		"name": "The Nyan Cat",
+		"age": 142,
+		"active": true,
+		"profile": {
+			"name": "ADMIN",
+			"__type": "Profile"
+		},
+		"__type": "User"
+	}
+]

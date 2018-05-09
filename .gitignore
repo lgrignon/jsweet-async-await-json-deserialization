@@ -1,0 +1,8 @@
+/bin/
+/target/
+.generated
+.ts
+.jsweet
+.classpath
+.settings
+.project
