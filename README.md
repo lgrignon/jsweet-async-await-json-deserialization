@@ -1,6 +1,7 @@
-# JSweet Model/DTO JSON deserialization
+# JSweet Model/DTO JSON deserialization + async / await
 
- Sample code showing how to properly deserialize JSON data (retrieved with fetch) to plain Java model / DTO objects 
+Sample code showing how to properly deserialize JSON data (retrieved with fetch) to plain Java model / DTO objects.
+It is worth noting the usage of the async / await idiom with JSweet along with the fetch API
 
 ## Usage
 
