@@ -1,6 +1,6 @@
-# JSweet 
+# JSweet Model/DTO JSON deserialization
 
-A simple project to get started with JSweet. This project just contains a main method that shows 'Hello world' messages in two different ways. The program uses the [J4TS](https://github.com/cincheo/j4ts) candy to access `java.util` API, and the jQuery candy. Programmers can use it to set up a new JSweet project and try out some basic features.
+ Sample code showing how to properly deserialize JSON data (retrieved with fetch) to plain Java model / DTO objects 
 
 ## Usage
 
