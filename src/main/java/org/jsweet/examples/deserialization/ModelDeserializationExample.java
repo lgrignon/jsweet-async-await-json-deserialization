@@ -15,7 +15,9 @@ import java.util.function.Consumer;
 import org.jsweet.examples.deserialization.model.Profile;
 import org.jsweet.examples.deserialization.model.User;
 
+import def.dom.Element;
 import def.dom.HTMLElement;
+import def.dom.NodeListOf;
 import def.es6.Globals.FetchResponse;
 import def.js.Promise;
 import jsweet.lang.Async;
@@ -65,14 +67,19 @@ public class ModelDeserializationExample {
 		console.log(users);
 
 		htmlOutput.style.color = "rgb(100, 200, 100)";
-		htmlOutput.innerHTML += "<br /><ul>";
+		htmlOutput.innerHTML += "<br />";
+
+		String userListHtml = " <ul>";
 
 		for (int i = 0; i < users.size(); i++) {
-			htmlOutput.innerHTML += "<li>user #" + (i + 1) + " is User?: " + (users.get(i) instanceof User) + " </li>";
-			htmlOutput.innerHTML += "<li>user #" + (i + 1) + "'s profile is Profile?: "
+			userListHtml += "<li>user #" + (i + 1) + " is User?: " + (users.get(i) instanceof User) + " </li>";
+			userListHtml += "<li>user #" + (i + 1) + "'s profile is Profile?: "
 					+ (users.get(i).profile instanceof Profile) + " </li>";
+
 		}
-		htmlOutput.innerHTML += "</ul>";
+		userListHtml += "</ul>";
+		htmlOutput.innerHTML += userListHtml;
+
 	}
 
 	private Object onError(Object error) {
@@ -86,13 +93,11 @@ public class ModelDeserializationExample {
 		def.js.Function getResultAsync = async(function(() -> {
 			await(delay(3000));
 
-			htmlOutput.innerHTML += "<br /><br />printed after async/await delay!!";
+			htmlOutput.innerHTML += "<br />printed after async/await delay!!";
 
 			return asyncReturn(42);
 		}));
 
-		System.out.println("my man");
-		
 		Promise<Integer> resultPromise = getResultAsync.$apply();
 		resultPromise //
 				.thenAsync(result -> {
