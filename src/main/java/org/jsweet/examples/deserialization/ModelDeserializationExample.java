@@ -1,18 +1,16 @@
 package org.jsweet.examples.deserialization;
 
 import static def.dom.Globals.console;
-import static def.dom.Globals.setTimeout;
 import static def.dom.Globals.document;
+import static def.dom.Globals.setTimeout;
 import static def.es6.Globals.fetch;
-import static jsweet.util.Lang.function;
-import static jsweet.util.Lang.await;
-import static jsweet.util.Lang.asyncReturn;
 import static jsweet.util.Lang.async;
+import static jsweet.util.Lang.asyncReturn;
+import static jsweet.util.Lang.await;
+import static jsweet.util.Lang.function;
 
 import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 import org.jsweet.examples.deserialization.model.Profile;
 import org.jsweet.examples.deserialization.model.User;
@@ -86,20 +84,33 @@ public class ModelDeserializationExample {
 
 	private void showDelayedMessage() {
 		def.js.Function getResultAsync = async(function(() -> {
-			await(delay(5000));
+			await(delay(3000));
 
 			htmlOutput.innerHTML += "<br /><br />printed after async/await delay!!";
 
 			return asyncReturn(42);
 		}));
 
+		System.out.println("my man");
+		
 		Promise<Integer> resultPromise = getResultAsync.$apply();
-		resultPromise.thenOnfulfilledFunction(result -> {
-			
-			htmlOutput.innerHTML += "<br />> you have long waited to know that the answer is: " + result;
-			
-			return null;
-		});
+		resultPromise //
+				.thenAsync(result -> {
+
+					htmlOutput.innerHTML += "<br />> you have long waited to know that the answer is: " + result;
+					return getAnotherAnswer("What is the age of the captain");
+				}) //
+				.then((String otherResult) -> {
+
+					htmlOutput.innerHTML += "<br />> " + otherResult;
+				});
+	}
+
+	@Async
+	private Promise<String> getAnotherAnswer(String baseQuestion) {
+		await(delay(2000));
+
+		return asyncReturn("but I can tell you more: \"" + baseQuestion + "\" is not a good question");
 	}
 
 	private Promise<Void> delay(int millis) {
