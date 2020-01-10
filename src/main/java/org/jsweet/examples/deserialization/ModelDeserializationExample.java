@@ -15,9 +15,7 @@ import java.util.function.Consumer;
 import org.jsweet.examples.deserialization.model.Profile;
 import org.jsweet.examples.deserialization.model.User;
 
-import def.dom.Element;
 import def.dom.HTMLElement;
-import def.dom.NodeListOf;
 import def.es6.Globals.FetchResponse;
 import def.js.Promise;
 import jsweet.lang.Async;
